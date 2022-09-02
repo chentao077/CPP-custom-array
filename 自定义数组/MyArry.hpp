@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<string>
+
 using namespace std;
 
 template<class T>
@@ -48,6 +49,44 @@ public:
 		return *this;
 	}
 
+	//重载[] 操作符  arr[0]
+	T& operator[](int index)
+	{
+		return this->pAddress[index];
+	}
+
+	//尾插法
+	void Push_back(const T& tmp)
+	{
+		if (this->m_size == this->m_Capacity)
+		{
+			return;
+		}
+		this->pAddress[this->m_size] = tmp;
+		this->m_size++;
+	}
+
+	//尾删法
+	void Pop_back()
+	{
+		if (this->m_size == 0)
+		{
+			return;
+		}
+		this->m_size--;
+	}
+
+	//获取容量
+	int getCapacity()
+	{
+		return this->m_Capacity;
+	}
+
+	//获取数组大小
+	int getSize()
+	{
+		return this->m_size;
+	}
 	//析构函数
 	~Myarry()
 	{
